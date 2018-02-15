@@ -1,10 +1,5 @@
-def greeting
+greeting_word = ARGV.shift
 
-  ARGV.each do |name|
-    greeting_word = ARGV.shift
-    p result = greeting_word + " #{name}"
-  end
-
+ARGV.each do |name|
+  p "#{greeting_word} #{name}"
 end
-
-greeting
