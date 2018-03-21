@@ -14,7 +14,8 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - View Entry Number n"
     puts "5 - Import entries from a CSV"
-    puts "6 - Exit"
+    puts "6 - Decimate entry base"
+    puts "7 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -40,6 +41,10 @@ class MenuController
         read_csv
         main_menu
       when 6
+        system "clear"
+        @address_book.decimate_entries
+        main_menu
+      when 7
         puts "Good-bye!"
         exit(0)
       else
@@ -93,6 +98,28 @@ class MenuController
 
    def read_csv
    end
+
+  def decimate_entries
+    puts "Are you sure you want to decimate your Address Book?"
+
+     print "Y or N: "
+     selection = gets.chomp
+    case selection
+       when "N"
+         system "clear"
+         puts "I guess you're not burning any bridges today"
+         main_menu
+       when "Y"
+         @address_book.entries.clear
+         puts "yeeeeeesssss...you have laid waste to the filthy book...>:)"
+         main_menu
+       else
+         system "clear"
+         puts "Sorry, that is not a valid input"
+         main_menu
+    end
+  end
+
 
    def entry_submenu(entry)
 

@@ -36,5 +36,17 @@ RSpec.describe AddressBook do
       expect(new_entry.email).to eq('augusta.king@lovelace.com')
     end
   end
-  
+
+  describe "#decimate_entries" do
+    it "deletes all entries" do
+      book = AddressBook.new
+      book.add_entry("John", "000.000.0010", "john@email.com")
+      book.add_entry("Tyler", "000.000.1111", "tyler@email.com")
+
+      book.decimate_entries
+      expect(book.entries.size).to eq 0
+    end
+  end
+
+
 end
